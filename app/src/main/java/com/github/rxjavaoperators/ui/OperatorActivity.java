@@ -1,5 +1,7 @@
 package com.github.rxjavaoperators.ui;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,9 +11,18 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.github.rxjavaoperators.R;
 import com.github.rxjavaoperators.entity.Operator;
+import com.github.rxjavaoperators.rxbinding2extends.PrimaryClipChangedSubscribe;
 import com.github.rxjavaoperators.ui.fragments.CreateOperatorFragment;
 
-public class OperatorActivity extends AppCompatActivity {
+import java.util.concurrent.TimeUnit;
+
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+
+public class OperatorActivity extends AppCompatActivity implements ClipboardManager.OnPrimaryClipChangedListener {
 
     private static final String EXTRA_KEY_OPERATOR = "extra_key_operator";
 
@@ -36,6 +47,35 @@ public class OperatorActivity extends AppCompatActivity {
                 .beginTransaction()
                 .add(R.id.container, fragmentSelector(operator))
                 .commit();
+
+        clipboardRx();
+    }
+
+    private CompositeDisposable compositeDisposable;
+
+    private void clipboardRx() {
+        ClipboardManager clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        clipboardManager.addPrimaryClipChangedListener(this);
+        compositeDisposable = new CompositeDisposable();
+        Observable<ClipData> clipDataObservable = Observable.create(new PrimaryClipChangedSubscribe(clipboardManager))
+                .debounce(300, TimeUnit.MILLISECONDS)
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread());
+        Disposable subscribe = clipDataObservable.subscribe(new Consumer<ClipData>() {
+                    @Override
+                    public void accept(@io.reactivex.annotations.NonNull ClipData clipData) throws Exception {
+                        //use clipData
+                    }
+                });
+        compositeDisposable.add(subscribe);
+    }
+
+    @Override
+    public void onDestroy() {
+        if (compositeDisposable != null && !compositeDisposable.isDisposed()) {
+            compositeDisposable.dispose();
+        }
+        super.onDestroy();
     }
 
     private Fragment fragmentSelector(@NonNull Operator operator) {
@@ -46,5 +86,10 @@ public class OperatorActivity extends AppCompatActivity {
 //                return new AllOperatorsFragment();
                 throw new IllegalArgumentException("Operator " + operator.getName() + " not implemented");
         }
+    }
+
+    @Override
+    public void onPrimaryClipChanged() {
+
     }
 }
