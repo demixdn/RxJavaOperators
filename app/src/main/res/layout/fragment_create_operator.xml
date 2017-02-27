@@ -1,0 +1,82 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:animateLayoutChanges="true"
+    tools:context="com.github.rxjavaoperators.ui.fragments.CreateOperatorFragment">
+
+
+    <include layout="@layout/layout_operator_image"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:text="@string/operator_create_title2"
+        style="@style/CreateOperatorTextStyle"/>
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:hint="@string/number"
+        android:inputType="number"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:id="@+id/layoutButtons">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="2dp"
+            android:layout_marginStart="16dp"
+            android:text="@string/onnext"
+            android:textAllCaps="false"
+            android:id="@+id/btOnNext"/>
+
+        <Button
+            android:id="@+id/btOnCompleted"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_weight="1"
+            android:text="@string/oncomplete"
+            android:textAllCaps="false"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="2dp"
+            android:text="@string/onerror"
+            android:textAllCaps="false"
+            android:id="@+id/btOnError"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textViewSubscribeTitle"
+        android:text="@string/operator_create_title1"
+        style="@style/CreateOperatorTextStyle"/>
+
+    <Button
+        android:id="@+id/btSubscribe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/subscribe"
+        android:textAllCaps="false"/>
+
+    <include layout="@layout/layout_logs"/>
+
+
+</LinearLayout>

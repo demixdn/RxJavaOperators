@@ -1,0 +1,52 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.github.rxjavaoperators.ui.fragments.AllOperatorsFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:text="@string/all_operators_title"
+            android:layout_margin="16dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:text="Observable"
+                android:id="@+id/btObservable"
+                style="@style/StartButtonInRowStyle"/>
+
+            <Button
+                android:text="Flowable"
+                android:id="@+id/btFlowable"
+                style="@style/MiddleButtonInRowStyle"/>
+
+            <Button
+                android:text="Single"
+                android:id="@+id/btSingle"
+                style="@style/EndButtonInRowStyle"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:text="Completable"
+                android:id="@+id/btCompletable"
+                style="@style/StartButtonInRowStyle"/>
+
+            <Button
+                android:text="Maybe"
+                android:id="@+id/btMaybe"
+                style="@style/EndButtonInRowStyle"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

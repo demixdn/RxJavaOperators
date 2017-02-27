@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Operators</string>
+
+    <string name="operator_create_title1">Чтоб получать логи, подпишитесь</string>
+    <string name="operator_create_title2">Увеличивайте значение в поле c помощью <b>onNext</b>, завершите поток с помощью <b>onComplete</b> или выбросьте ошибку <b>onError</b></string>
+    <string name="number">Number</string>
+    <string name="onnext">onNext</string>
+    <string name="oncomplete">onComplete</string>
+    <string name="onerror">onError</string>
+    <string name="subscribe">Subscribe</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="all_operators_title">Click on the button and watch the logs. </string>
+</resources>

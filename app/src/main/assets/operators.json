@@ -1,0 +1,42 @@
+[
+  {
+    "category": {
+      "name": "Creating Observables"
+    },
+    "name": "Create",
+    "description": "Этот метод позволяет создавать Observable с нуля, полностью контролируя какие элементы и когда он будет генерировать.",
+    "official_link": "http://reactivex.io/documentation/operators/create.html",
+    "official_image_link": "http://reactivex.io/documentation/operators/images/create.c.png",
+    "marbles_link": null
+  },
+  {
+    "category": {
+      "name": "Creating Observables"
+    },
+    "name": "Defer",
+    "description": "Этот оператор позволяет отложить создание Observable, до момента подписки с помощью subscribe",
+    "official_link": "http://reactivex.io/documentation/operators/defer.html",
+    "official_image_link": "http://reactivex.io/documentation/operators/images/defer.c.png",
+    "marbles_link": null
+  },
+  {
+    "category": {
+      "name": "Transforming Observables"
+    },
+    "name": "Buffer",
+    "description": "Элементы из SO по определенным правилам объединяются в массивы и генерируются в RO. В качестве параметров передается count, — максимальное число элементов в массиве, и timeSpan время максимального ожидания наполнения текущего массива из элементов SO. Таким образом элемент RO, являет собой массив [T], длинной от 0 до count.",
+    "official_link": "http://reactivex.io/documentation/operators/buffer.html",
+    "official_image_link": "http://reactivex.io/documentation/operators/images/Buffer.png",
+    "marbles_link": null
+  },
+  {
+    "category": {
+      "name": "Filtering Observables"
+    },
+    "name": "Debounce",
+    "description": "Из SO берутся лишь те элементы, после которых не было новых элементов в течении N секунд.",
+    "official_link": "http://reactivex.io/documentation/operators/debounce.html",
+    "official_image_link": "http://reactivex.io/documentation/operators/images/debounce.png",
+    "marbles_link": "http://rxmarbles.com/#debounce"
+  }
+]
